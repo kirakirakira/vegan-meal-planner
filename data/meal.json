@@ -1,0 +1,22 @@
+{
+  "data": {
+    "Monday": {
+        "Breakfast": {
+            "name": "Snobby Joes",
+            "notes": "Sloppy Joes made with lentils"
+        },
+          "Lunch": {
+            "name": "Avocado Toast",
+            "notes": "Only have 2 avocados"
+        },
+          "Dinner": {
+            "name": "Stir Fry",
+            "notes": "Extra tofu"
+        },
+          "Beverage": {
+            "name": "Water",
+            "notes": "Duh"
+          }
+    }
+  }
+}

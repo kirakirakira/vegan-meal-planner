@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Vegan Meal Planner
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css', integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb', crossorigin='anonymous')
+    link(rel='stylesheet', href='')
+  body
+    .container
+      h1 Vegan Meal Planner
+      table.table
+        thead.thead-dark
+          tr
+            th(scope='col') Meal
+            th(scope='col') #{Day}
+        tbody
+          tr
+            th(scope='row') Breakfast
+            td #{Breakfast}
+          tr
+            th(scope='row') Lunch
+            td #{Lunch}
+          tr
+            th(scope='row') Dinner
+            td #{Dinner}
+          tr
+            th(scope='row') Snack
+            td #{Snack}
+          tr
+            th(scope='row') Beverage
+            td #{Beverage}
+    footer.footer
+      .container
+        span.text-muted Copyright 2018 by Kira Hartlage
