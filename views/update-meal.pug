@@ -1,0 +1,103 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Vegan Meal Planner
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css', integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb', crossorigin='anonymous')
+    link(rel='stylesheet', href='')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="/js/app.js" type="text/javascript")
+  body
+    .container
+      h1 Vegan Meal Planner
+      h2 Enter in your meal
+      form
+        .form-check
+          label(for='exampleFormCheck') Which days? #{days}
+          br
+          .row
+            .col-sm
+              label.form-check.form-check-label
+                input#exampleFormCheck.form-check-input(type='checkbox', value='Monday', name="days", checked="checked")
+                |             Monday
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Tuesday', name="days" checked="checked")
+                |             Tuesday
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Wednesday', name="days")
+                |             Wednesday
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Thursday', name="days")
+                |             Thursday
+            .col-sm
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Friday', name="days")
+                |             Friday
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Saturday', name="days")
+                |             Saturday
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Sunday', name="days")
+                |             Sunday
+          br
+        .form-group
+          label(for='exampleFormControlSelect1') Choose Which Meal
+          select#exampleFormControlSelect1.form-control(name='timeOfDay')
+            option Breakfast
+            option Lunch
+            option Dinner
+            option Snack
+            option Beverage
+        .form-group
+          label(for='exampleFormControlInput1') Name of Meal
+          input#exampleFormControlInput1.form-control(type='text', placeholder='Very Delicious Food',  name='mealName' value= mealName)
+        .form-check
+          label(for='exampleFormCheck') Which of Dr. Greger's Daily Dozen does this meal include?
+          br
+          .row
+            .col-sm
+              label.form-check.form-check-label
+                input#exampleFormCheck.form-check-input(type='checkbox', value='Beans', name="categories")
+                |             Beans
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Berries', name="categories")
+                |             Berries
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Other Fruits', name="categories")
+                |             Other Fruits
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Flaxseeds', name="categories")
+                |             Flaxseeds
+            .col-sm
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Nuts', name="categories")
+                |             Nuts
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Spices', name="categories")
+                |             Spices
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Cruciferous Vegetables', name="categories")
+                |             Cruciferous Vegetables
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Leafy Greens', name="categories")
+                |             Leafy Greens
+            .col-sm
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Other Vegetables', name="categories")
+                |             Other Vegetables
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Whole Grains', name="categories")
+                |             Whole Grains
+              label.form-check.form-check-label
+                input.form-check-input(type='checkbox', value='Beverages', name="categories")
+                |             Beverages
+          br
+          .form-group
+            label(for='exampleFormControlTextarea1') Notes/Recipe
+            textarea#exampleFormControlTextarea1.form-control(rows='3', name='notes')= notes
+          input.btn.btn-primary(type='submit', value='Submit' onclick="updateMeal()")
+          input.btn.btn-light(type='button', value='Cancel')
+    footer.footer
+      .container
+        span.text-muted Copyright 2018 by Kira Hartlage

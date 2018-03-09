@@ -2,30 +2,16 @@
 
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const Meal = require('../models/index');
 
 const { data } = require('../data/meal.json');
 
+// GET the entire week's meal plan
 router.get('/', (req, res) => {
 
   let daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   let dayPlan = {};
-
-  // daysOfWeek.forEach((day, index) => {
-  //   Meal.find({days: {$in: [day]}}, function(err, meals) {
-  //     if(err) return handleError(err);
-  //     dayPlan[day] = {"Breakfast": [], "Lunch": [], "Dinner": []};
-  //     for (i = 0; i < meals.length; i++) {
-  //       if (meals[i].timeOfDay === "Breakfast") {
-  //         dayPlan[day]["Breakfast"].push(meals[i].mealName);
-  //       } else if (meals[i].timeOfDay === "Lunch") {
-  //         dayPlan[day]["Lunch"].push(meals[i].mealName);
-  //       } else if (meals[i].timeOfDay === "Dinner") {
-  //         dayPlan[day]["Dinner"].push(meals[i].mealName);
-  //       }
-  //     }
-  //   })
-  // })
 
   let promises = [];
   for (i = 0; i < daysOfWeek.length; i++) {
@@ -54,54 +40,14 @@ router.get('/', (req, res) => {
     .catch((error) => {
       return handleError(error);
     });
-
-
-
-  //
-  // for (i = 0; i < daysOfWeek.length; i++) {
-  //   const day = daysOfWeek[i];
-  //   // get the data for each day and put in an object
-  //   Meal.find({days: {$in: [day]}}, function(err, meals) {
-  //     if(err) return handleError(err);
-  //
-  //     dayPlan[day] = {"Breakfast": [], "Lunch": [], "Dinner": []};
-  //     for (i = 0; i < meals.length; i++) {
-  //       if (meals[i].timeOfDay === "Breakfast") {
-  //         dayPlan[day]["Breakfast"].push(meals[i].mealName);
-  //       } else if (meals[i].timeOfDay === "Lunch") {
-  //         dayPlan[day]["Lunch"].push(meals[i].mealName);
-  //       } else if (meals[i].timeOfDay === "Dinner") {
-  //         dayPlan[day]["Dinner"].push(meals[i].mealName);
-  //       }
-  //     }
-  //   })
-  // }
-
-  // // get the data for each day and put in an object
-  // Meal.find({days: {$in: ['Monday']}}, function(err, meals) {
-  //   if(err) return handleError(err);
-  //
-  //   let dayPlan = {"Monday": {"Breakfast": [], "Lunch": [], "Dinner": []}};
-  //
-  //   for (i = 0; i < meals.length; i++) {
-  //     if (meals[i].timeOfDay === "Breakfast") {
-  //       console.log(meals[i].mealName);
-  //       dayPlan["Monday"]["Breakfast"].push(meals[i].mealName);
-  //     } else if (meals[i].timeOfDay === "Lunch") {
-  //       dayPlan["Monday"]["Lunch"].push(meals[i].mealName);
-  //     } else if (meals[i].timeOfDay === "Dinner") {
-  //       dayPlan["Monday"]["Dinner"].push(meals[i].mealName);
-  //     }
-  //   }
-  // console.log("Day plan is ", dayPlan);
-  // // pass the object to the pug template
-  // res.render('display-week', dayPlan);
 });
 
+// GET the new meal form
 router.get('/add', (req, res) => {
   res.render('create-meal');
 });
 
+// POST the new meal to the database
 router.post('/add', (req, res, next) => {
   if (req.body.timeOfDay && req.body.mealName) {
     // create object with form input
@@ -128,6 +74,72 @@ router.post('/add', (req, res, next) => {
   }
 });
 
+// GET update form for an existing meal
+router.get('/meal/:mealId', function(req, res, next) {
+  const Meal = mongoose.model('Meal');
+  const mealId = req.params.mealId;
+
+  Meal.findById(mealId, function(err, meal) {
+    if (err) {
+      const err = new Error('Server error');
+      err.status = 500;
+      return next(err);
+    }
+    if (!meal) {
+      const err = new Error('Meal not found');
+      err.status = 404;
+      return next(err);
+    }
+    res.render('update-meal', meal);
+  })
+});
+
+// PUT (update) an existing meal
+router.put('/meal/:mealId', function(req, res, next) {
+  const Meal = mongoose.model('Meal');
+  const mealId = req.params.mealId;
+  console.log("meal id is ", mealId);
+  
+  Meal.findById(mealId, function(err, meal) {
+    console.log("meal? ?? ", meal);
+    if (err) {
+      const err = new Error('Server error');
+      err.status = 500;
+      return next(err);
+    }
+    if (!meal) {
+      const err = new Error('Meal not found');
+      err.status = 404;
+      return next(err);
+    }
+    if (req.body.timeOfDay && req.body.mealName) {
+      // update object with form input
+      const mealData = {
+        timeOfDay: req.body.timeOfDay || meal.timeOfDay,
+        mealName: req.body.mealName || meal.mealName,
+        notes: req.body.notes || meal.notes,
+        categories: req.body.categories || meal.categories,
+        days: req.body.days || meal.days
+      };
+
+      // use schema's 'update' method to update doc into mongo
+      meal.update(mealData, (error, meal) => {
+        if (error) {
+          return next(error);
+        } else {
+          return res.redirect('/');
+        }
+      });
+    } else {
+      const err = new Error('Need at least time of day and meal name');
+      err.status = 400;
+      return next(err);
+    }
+    console.log(meal);
+  })
+});
+
+// GET a specific day's meal plan
 router.get('/:day', (req, res) => {
   const { day } = req.params;
 
