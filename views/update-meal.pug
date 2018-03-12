@@ -11,10 +11,11 @@ html(lang='en')
   body
     .container
       h1 Vegan Meal Planner
-      h2 Enter in your meal
-      form
+      h2(name='id') Update #{mealName} for #{timeOfDay}
+      form(method='post', action='/meal/')
+        input#mealId(type='hidden', name='mealId', value=_id)
         .form-check
-          label(for='exampleFormCheck') Which days? #{days}
+          label(for='exampleFormCheck') Which days?
           br
           .row
             .col-sm
@@ -96,7 +97,7 @@ html(lang='en')
           .form-group
             label(for='exampleFormControlTextarea1') Notes/Recipe
             textarea#exampleFormControlTextarea1.form-control(rows='3', name='notes')= notes
-          input.btn.btn-primary(type='submit', value='Submit' onclick="updateMeal()")
+          input.btn.btn-primary(type='submit', value='Submit')
           input.btn.btn-light(type='button', value='Cancel')
     footer.footer
       .container
