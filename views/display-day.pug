@@ -8,38 +8,59 @@ html(lang='en')
     link(rel='stylesheet', href='')
   body
     .container
-      h1 Vegan Meal Planner
+      h1 Vegan Meal Plan for #{Day}
       table.table
         thead.thead-dark
           tr
-            th(scope='col') Meal
             th(scope='col') #{Day}
+            th(scope='col') Meal
+            th(scope='col') Notes
         tbody
           tr
             th(scope='row') Breakfast
             td
               if Breakfast
-                a(class='button', href="/meal/update/" + Breakfast[1])=Breakfast[0]
+                a(class='button', href="/meal/update/" + Breakfast["id"])=Breakfast["mealName"]
+            td
+              if Breakfast
+                if Breakfast["notes"]
+                  p(class='dummy')=Breakfast["notes"]
           tr
             th(scope='row') Lunch
             td
               if Lunch
-                a(class='button', href="/meal/update/" + Lunch[1])=Lunch[0]
+                a(class='button', href="/meal/update/" + Lunch["id"])=Lunch["mealName"]
+            td
+              if Lunch
+                if Lunch["notes"]
+                  p(class='dummy')=Lunch["notes"]
           tr
             th(scope='row') Dinner
             td
               if Dinner
-                a(class='button', href="/meal/update/" + Dinner[1])=Dinner[0]
+                a(class='button', href="/meal/update/" + Dinner["id"])=Dinner["mealName"]
+            td
+              if Dinner
+                if Dinner["notes"]
+                  p(class='dummy')=Dinner["notes"]
           tr
             th(scope='row') Snack
             td
               if Snack
-                a(class='button', href="/meal/update/" + Snack[1])=Snack[0]
+                a(class='button', href="/meal/update/" + Snack["id"])=Snack["mealName"]
+            td
+              if Snack
+                if Snack["notes"]
+                  p(class='dummy')=Snack["notes"]
           tr
             th(scope='row') Beverage
             td
               if Beverage
-                a(class='button', href="/meal/update/" + Beverage[1])=Beverage[0]
+                a(class='button', href="/meal/update/" + Beverage["id"])=Beverage["mealName"]
+            td
+              if Beverage
+                if Beverage["notes"]
+                  p(class='dummy')=Beverage["notes"]
     footer.footer
       .container
         span.text-muted Copyright 2018 by Kira Hartlage
