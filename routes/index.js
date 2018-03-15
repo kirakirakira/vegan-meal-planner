@@ -147,6 +147,18 @@ router.get('/:day', (req, res) => {
     if(err) return handleError(err);
 
     let dayPlan = {"Day": day, "Breakfast": [], "Lunch": [], "Dinner": []};
+    let categoryTotal = {};
+
+    function updateCategoryCounts(mealCategoryData) {
+      for (j = 0; j < mealCategoryData.length; j++) {
+        console.log(mealCategoryData[j]);
+        if (mealCategoryData[j] in categoryTotal) {
+          categoryTotal[mealCategoryData[j]] += 1;
+        } else {
+          categoryTotal[mealCategoryData[j]] = 1;
+        }
+      }
+    }
 
     for (i = 0; i < meals.length; i++) {
       if (meals[i].timeOfDay === "Breakfast") {
@@ -156,6 +168,8 @@ router.get('/:day', (req, res) => {
           "notes": meals[i].notes,
           "categories": meals[i].categories
         });
+        updateCategoryCounts(meals[i].categories);
+
       } else if (meals[i].timeOfDay === "Lunch") {
         dayPlan["Lunch"].push({
           "id": meals[i]._id,
@@ -163,6 +177,8 @@ router.get('/:day', (req, res) => {
           "notes": meals[i].notes,
           "categories": meals[i].categories
         });
+        updateCategoryCounts(meals[i].categories);
+
       } else if (meals[i].timeOfDay === "Dinner") {
         dayPlan["Dinner"].push({
           "id": meals[i]._id,
@@ -170,9 +186,11 @@ router.get('/:day', (req, res) => {
           "notes": meals[i].notes,
           "categories": meals[i].categories
         });
+        updateCategoryCounts(meals[i].categories);
       }
     }
     console.log("day plan from the day view ", dayPlan);
+    console.log("category total list is now ", categoryTotal);
     res.render('display-day', dayPlan);
   })
 });

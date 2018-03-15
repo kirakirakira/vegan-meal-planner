@@ -16,51 +16,106 @@ html(lang='en')
             th(scope='col') Meal
             th(scope='col') Notes
         tbody
+          if Breakfast
+            each meal in Breakfast
+              tr
+                th(scope='row') Breakfast
+                td
+                  a(class='button', href="/meal/update/" + meal["id"])=meal["mealName"]
+                  br
+                td
+                  if meal["notes"]
+                  p(class='dummy')=meal["notes"]
+          if Lunch
+            each meal in Lunch
+              tr
+                th(scope='row') Lunch
+                td
+                  a(class='button', href="/meal/update/" + meal["id"])=meal["mealName"]
+                  br
+                td
+                  if meal["notes"]
+                  p(class='dummy')=meal["notes"]
+          if Dinner
+            each meal in Dinner
+              tr
+                th(scope='row') Dinner
+                td
+                  a(class='button', href="/meal/update/" + meal["id"])=meal["mealName"]
+                  br
+                td
+                  if meal["notes"]
+                  p(class='dummy')=meal["notes"]
+          if Snack
+            each meal in Snack
+              tr
+                th(scope='row') Snack
+                td
+                  a(class='button', href="/meal/update/" + meal["id"])=meal["mealName"]
+                  br
+                td
+                  if meal["notes"]
+                  p(class='dummy')=meal["notes"]
+          if Beverage
+            each meal in Beverage
+              tr
+                th(scope='row') Beverage
+                td
+                  a(class='button', href="/meal/update/" + meal["id"])=meal["mealName"]
+                  br
+                td
+                  if meal["notes"]
+                  p(class='dummy')=meal["notes"]
+                  
+
+    .container
+      table.table
+        thead.thead-dark
           tr
-            th(scope='row') Breakfast
-            td
-              if Breakfast
-                a(class='button', href="/meal/update/" + Breakfast["id"])=Breakfast["mealName"]
-            td
-              if Breakfast
-                if Breakfast["notes"]
-                  p(class='dummy')=Breakfast["notes"]
+            th(scope='col') Daily Dozen
+            th(scope='col') Breakfast
+            th(scope='col') Lunch
+            th(scope='col') Dinner
+            th(scope='col') Snack
+            th(scope='col') Beverage
+        tbody
           tr
-            th(scope='row') Lunch
-            td
-              if Lunch
-                a(class='button', href="/meal/update/" + Lunch["id"])=Lunch["mealName"]
-            td
-              if Lunch
-                if Lunch["notes"]
-                  p(class='dummy')=Lunch["notes"]
+            th(scope='row') Beans
+            td Mark
           tr
-            th(scope='row') Dinner
-            td
-              if Dinner
-                a(class='button', href="/meal/update/" + Dinner["id"])=Dinner["mealName"]
-            td
-              if Dinner
-                if Dinner["notes"]
-                  p(class='dummy')=Dinner["notes"]
+            th(scope='row') Berries
+            td Jacob
           tr
-            th(scope='row') Snack
-            td
-              if Snack
-                a(class='button', href="/meal/update/" + Snack["id"])=Snack["mealName"]
-            td
-              if Snack
-                if Snack["notes"]
-                  p(class='dummy')=Snack["notes"]
+            th(scope='row') Other Fruits
+            td Larry
           tr
-            th(scope='row') Beverage
-            td
-              if Beverage
-                a(class='button', href="/meal/update/" + Beverage["id"])=Beverage["mealName"]
-            td
-              if Beverage
-                if Beverage["notes"]
-                  p(class='dummy')=Beverage["notes"]
+            th(scope='row') Flaxseeds
+            td Larry
+          tr
+            th(scope='row') Nuts
+            td Larry
+          tr
+            th(scope='row') Spices
+            td Larry
+          tr
+            th(scope='row') Cruciferous Vegetables
+            td Larry
+          tr
+            th(scope='row') Leafy Greens
+            td Larry
+          tr
+            th(scope='row') Other Vegetables
+            td Larry
+          tr
+            th(scope='row') Whole Grains
+            td Larry
+          tr
+            th(scope='row') Beverages
+            td Larry
+
+
+
+    
     footer.footer
       .container
         span.text-muted Copyright 2018 by Kira Hartlage
