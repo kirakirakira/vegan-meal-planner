@@ -151,12 +151,16 @@ router.get('/:day', (req, res) => {
     for (i = 0; i < meals.length; i++) {
       if (meals[i].timeOfDay === "Breakfast") {
         dayPlan["Breakfast"].push(meals[i].mealName);
+        dayPlan["Breakfast"].push(meals[i]._id);
       } else if (meals[i].timeOfDay === "Lunch") {
         dayPlan["Lunch"].push(meals[i].mealName);
+        dayPlan["Lunch"].push(meals[i]._id);
       } else if (meals[i].timeOfDay === "Dinner") {
         dayPlan["Dinner"].push(meals[i].mealName);
+        dayPlan["Dinner"].push(meals[i]._id);
       }
     }
+    console.log("day plan from the day view ", dayPlan);
     res.render('display-day', dayPlan);
   })
 });

@@ -17,19 +17,29 @@ html(lang='en')
         tbody
           tr
             th(scope='row') Breakfast
-            td #{Breakfast}
+            td
+              if Breakfast
+                a(class='button', href="/meal/update/" + Breakfast[1])=Breakfast[0]
           tr
             th(scope='row') Lunch
-            td #{Lunch}
+            td
+              if Lunch
+                a(class='button', href="/meal/update/" + Lunch[1])=Lunch[0]
           tr
             th(scope='row') Dinner
-            td #{Dinner}
+            td
+              if Dinner
+                a(class='button', href="/meal/update/" + Dinner[1])=Dinner[0]
           tr
             th(scope='row') Snack
-            td #{Snack}
+            td
+              if Snack
+                a(class='button', href="/meal/update/" + Snack[1])=Snack[0]
           tr
             th(scope='row') Beverage
-            td #{Beverage}
+            td
+              if Beverage
+                a(class='button', href="/meal/update/" + Beverage[1])=Beverage[0]
     footer.footer
       .container
         span.text-muted Copyright 2018 by Kira Hartlage
