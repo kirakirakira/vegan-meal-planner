@@ -191,6 +191,8 @@ router.get('/:day', (req, res) => {
     }
     console.log("day plan from the day view ", dayPlan);
     console.log("category total list is now ", categoryTotal);
+    dayPlan = Object.assign({}, dayPlan, {'categoryTotal': categoryTotal});
+    console.log("day plan from the day view ", dayPlan);
     res.render('display-day', dayPlan);
   })
 });

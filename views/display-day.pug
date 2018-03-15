@@ -79,39 +79,31 @@ html(lang='en')
             th(scope='col') Snack
             th(scope='col') Beverage
         tbody
-          tr
-            th(scope='row') Beans
-            td Mark
-          tr
-            th(scope='row') Berries
-            td Jacob
-          tr
-            th(scope='row') Other Fruits
-            td Larry
-          tr
-            th(scope='row') Flaxseeds
-            td Larry
-          tr
-            th(scope='row') Nuts
-            td Larry
-          tr
-            th(scope='row') Spices
-            td Larry
-          tr
-            th(scope='row') Cruciferous Vegetables
-            td Larry
-          tr
-            th(scope='row') Leafy Greens
-            td Larry
-          tr
-            th(scope='row') Other Vegetables
-            td Larry
-          tr
-            th(scope='row') Whole Grains
-            td Larry
-          tr
-            th(scope='row') Beverages
-            td Larry
+          each category in categoryTotal 
+            tr
+              th(scope='row')= categoryTotal[category]
+              td= category
+          //- tr
+          //-   th(scope='row') Nuts
+          //-   td #{Nuts}
+          //- tr
+          //-   th(scope='row') Spices
+          //-   td #{Spices}
+          //- tr
+          //-   th(scope='row') Cruciferous Vegetables
+          //-   td #{Cruciferous Vegetables}
+          //- tr
+          //-   th(scope='row') Leafy Greens
+          //-   td #{Leafy Greens}
+          //- tr
+          //-   th(scope='row') Other Vegetables
+          //-   td #{Other Vegetables}
+          //- tr
+          //-   th(scope='row') Whole Grains
+          //-   td #{Whole Grains}
+          //- tr
+          //-   th(scope='row') Beverages
+          //-   td #{Beverages}
 
 
 
