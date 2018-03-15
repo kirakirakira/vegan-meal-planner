@@ -29,7 +29,6 @@ router.get('/', (req, res) => {
               dayPlan[day]["Dinner"].push(meals[i].mealName);
             }
           }
-          // console.log("Day plan within the thing ", dayPlan);
         });
     promises.push(promise);
   }
@@ -75,7 +74,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET update form for an existing meal
-router.get('/meal/:mealId', function(req, res, next) {
+router.get('/meal/update/:mealId', function(req, res, next) {
   const Meal = mongoose.model('Meal');
   const mealId = req.params.mealId;
 
@@ -95,7 +94,7 @@ router.get('/meal/:mealId', function(req, res, next) {
 });
 
 // Post "put" (update) an existing meal
-router.post('/meal/', function(req, res, next) {
+router.post('/meal/update', function(req, res, next) {
   console.log("hit it");
   const Meal = mongoose.model('Meal');
   console.log(req.body);

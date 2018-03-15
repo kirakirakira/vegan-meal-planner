@@ -21,7 +21,8 @@ html(lang='en')
         tbody
           each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
             tr
-              th(scope='row')= day
+              th(scope='row')
+                a(class='button', href="" + day)= day
               td #{val.Breakfast}
               td #{val.Lunch}
               td #{val.Dinner}

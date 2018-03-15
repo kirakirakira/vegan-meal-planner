@@ -12,7 +12,7 @@ html(lang='en')
     .container
       h1 Vegan Meal Planner
       h2(name='id') Update #{mealName} for #{timeOfDay}
-      form(method='post', action='/meal/')
+      form(method='post', action='/meal/update')
         input#mealId(type='hidden', name='mealId', value=_id)
         .form-check
           label(for='exampleFormCheck') Which days?
