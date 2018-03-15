@@ -146,24 +146,30 @@ router.get('/:day', (req, res) => {
   Meal.find({days: {$in: [day]}}, function(err, meals) {
     if(err) return handleError(err);
 
-    let dayPlan = {"Day": day, "Breakfast": {}, "Lunch": {}, "Dinner": {}};
+    let dayPlan = {"Day": day, "Breakfast": [], "Lunch": [], "Dinner": []};
 
     for (i = 0; i < meals.length; i++) {
       if (meals[i].timeOfDay === "Breakfast") {
-        dayPlan["Breakfast"]["id"]=meals[i]._id;
-        dayPlan["Breakfast"]["mealName"]=meals[i].mealName;
-        dayPlan["Breakfast"]["notes"]=meals[i].notes;
-        dayPlan["Breakfast"]["categories"]=meals[i].categories;
+        dayPlan["Breakfast"].push({
+          "id": meals[i]._id,
+          "mealName": meals[i].mealName,
+          "notes": meals[i].notes,
+          "categories": meals[i].categories
+        });
       } else if (meals[i].timeOfDay === "Lunch") {
-        dayPlan["Lunch"]["id"]=meals[i]._id;
-        dayPlan["Lunch"]["mealName"]=meals[i].mealName;
-        dayPlan["Lunch"]["notes"]=meals[i].notes;
-        dayPlan["Lunch"]["categories"]=meals[i].categories;
+        dayPlan["Lunch"].push({
+          "id": meals[i]._id,
+          "mealName": meals[i].mealName,
+          "notes": meals[i].notes,
+          "categories": meals[i].categories
+        });
       } else if (meals[i].timeOfDay === "Dinner") {
-        dayPlan["Dinner"]["id"]=meals[i]._id;
-        dayPlan["Dinner"]["mealName"]=meals[i].mealName;
-        dayPlan["Dinner"]["notes"]=meals[i].notes;
-        dayPlan["Dinner"]["categories"]=meals[i].categories;
+        dayPlan["Dinner"].push({
+          "id": meals[i]._id,
+          "mealName": meals[i].mealName,
+          "notes": meals[i].notes,
+          "categories": meals[i].categories
+        });
       }
     }
     console.log("day plan from the day view ", dayPlan);
