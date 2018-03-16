@@ -68,21 +68,20 @@ html(lang='en')
                   p(class='dummy')=meal["notes"]
                   
 
-    //- .container
-    //-   table.table
-    //-     thead.thead-dark
-    //-       tr
-    //-         th(scope='col') Daily Dozen
-    //-         th(scope='col') Breakfast
-    //-         th(scope='col') Lunch
-    //-         th(scope='col') Dinner
-    //-         th(scope='col') Snack
-    //-         th(scope='col') Beverage
-    //-     tbody
-    //-       each category in categoryTotal 
-    //-         tr
-    //-           th(scope='row')= categoryTotal[category]
-    //-           td= category
+      table.table
+        thead.thead-dark
+          tr
+            th(scope='col') Daily Dozen
+            th(scope='col') Total
+
+        tbody
+          - var catKeys = Object.keys(categoryTotal)
+          - console.log(catKeys);
+          each category in catKeys
+            - console.log(category);
+            tr
+              th(scope='row')= category
+              td= categoryTotal[category]
 
 
     footer.footer
