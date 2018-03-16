@@ -19,11 +19,16 @@ html(lang='en')
           tbody
           each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
             - if (val[timeOfDay] && val[timeOfDay].length > 0)
-              - for (i = 0; i < val[timeOfDay].length; i++)
-                tr
-                  th(scope='row')
-                    a(class='button', href="" + day)= day
-                    td=val[timeOfDay][i].mealName
+              tr
+                th(scope='row')
+                  a(class='button', href="" + day)= day
+                  td
+                    ul
+                      - for (i = 0; i < val[timeOfDay].length; i++)
+                        li
+                          a(class='button', href="/meal/update/" + val[timeOfDay][i].id)=val[timeOfDay][i].mealName
+                          - console.log("id is ", val[timeOfDay][i].id);
+                          - console.log("mealName is ", val[timeOfDay][i].mealName);
       
       //- table.table
       //-   thead.thead-dark

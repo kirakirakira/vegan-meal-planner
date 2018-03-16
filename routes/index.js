@@ -19,15 +19,34 @@ router.get('/', (req, res) => {
     let promise = Meal.find({days: {$in: [day]}}, function(err, meals) {
           if(err) return handleError(err);
 
-          weekPlan[day] = {"Breakfast": [], "Lunch": [], "Dinner": []};
+          weekPlan[day] = {"Breakfast": [], "Lunch": [], "Dinner": [], "Snack": [], "Beverage": []};
           for (i = 0; i < meals.length; i++) {
             if (meals[i].timeOfDay === "Breakfast") {
               // dayPlan[day]["Breakfast"].push(meals[i].mealName);
-              weekPlan[day]["Breakfast"].push({"mealName": meals[i]["mealName"]});
+              weekPlan[day]["Breakfast"].push({
+                "mealName": meals[i]["mealName"],
+                "id": meals[i]["id"]
+              });
             } else if (meals[i].timeOfDay === "Lunch") {
-              weekPlan[day]["Lunch"].push({"mealName": meals[i]["mealName"]});
+              weekPlan[day]["Lunch"].push({
+                "mealName": meals[i]["mealName"],
+                "id": meals[i]["id"]
+              });
             } else if (meals[i].timeOfDay === "Dinner") {
-              weekPlan[day]["Dinner"].push({"mealName": meals[i]["mealName"]});
+              weekPlan[day]["Dinner"].push({
+                "mealName": meals[i]["mealName"],
+                "id": meals[i]["id"]
+              });
+            } else if (meals[i].timeOfDay === "Snack") {
+              weekPlan[day]["Snack"].push({
+                "mealName": meals[i]["mealName"],
+                "id": meals[i]["id"]
+              });
+            } else if (meals[i].timeOfDay === "Beverage") {
+              weekPlan[day]["Beverage"].push({
+                "mealName": meals[i]["mealName"],
+                "id": meals[i]["id"]
+              });
             }
           }
           console.log("what is weekPlan ", weekPlan);
@@ -149,7 +168,7 @@ router.get('/:day', (req, res) => {
   Meal.find({days: {$in: [day]}}, function(err, meals) {
     if(err) return handleError(err);
 
-    let dayPlan = {"Day": day, "Breakfast": [], "Lunch": [], "Dinner": []};
+    let dayPlan = {"Day": day, "Breakfast": [], "Lunch": [], "Dinner": [], "Snack": [], "Beverage": []};
     let categoryTotal = {};
 
     function updateCategoryCounts(mealCategoryData) {
