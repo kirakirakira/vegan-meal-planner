@@ -11,7 +11,7 @@ const { data } = require('../data/meal.json');
 router.get('/', (req, res) => {
 
   let daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  let dayPlan = {};
+  let weekPlan = {};
 
   let promises = [];
   for (i = 0; i < daysOfWeek.length; i++) {
@@ -19,22 +19,25 @@ router.get('/', (req, res) => {
     let promise = Meal.find({days: {$in: [day]}}, function(err, meals) {
           if(err) return handleError(err);
 
-          dayPlan[day] = {"Breakfast": [], "Lunch": [], "Dinner": []};
+          weekPlan[day] = {"Breakfast": [], "Lunch": [], "Dinner": []};
           for (i = 0; i < meals.length; i++) {
             if (meals[i].timeOfDay === "Breakfast") {
-              dayPlan[day]["Breakfast"].push(meals[i].mealName);
+              // dayPlan[day]["Breakfast"].push(meals[i].mealName);
+              weekPlan[day]["Breakfast"].push({"mealName": meals[i]["mealName"]});
             } else if (meals[i].timeOfDay === "Lunch") {
-              dayPlan[day]["Lunch"].push(meals[i].mealName);
+              weekPlan[day]["Lunch"].push(meals[i].mealName);
             } else if (meals[i].timeOfDay === "Dinner") {
-              dayPlan[day]["Dinner"].push(meals[i].mealName);
+              weekPlan[day]["Dinner"].push(meals[i].mealName);
             }
           }
+          console.log("what is weekPlan ", weekPlan);
         });
     promises.push(promise);
   }
   Promise.all(promises)
     .then(() => {
-      res.render('display-week', dayPlan);
+      // console.log(dayPlan);
+      res.render('display-week', weekPlan);
     })
     .catch((error) => {
       return handleError(error);

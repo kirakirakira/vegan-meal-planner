@@ -67,47 +67,23 @@ html(lang='en')
                   if meal["notes"]
                   p(class='dummy')=meal["notes"]
                   
+    //- 
+    //- .container
+    //-   table.table
+    //-     thead.thead-dark
+    //-       tr
+    //-         th(scope='col') Daily Dozen
+    //-         th(scope='col') Breakfast
+    //-         th(scope='col') Lunch
+    //-         th(scope='col') Dinner
+    //-         th(scope='col') Snack
+    //-         th(scope='col') Beverage
+    //-     tbody
+    //-       each category in categoryTotal 
+    //-         tr
+    //-           th(scope='row')= categoryTotal[category]
+    //-           td= category
 
-    .container
-      table.table
-        thead.thead-dark
-          tr
-            th(scope='col') Daily Dozen
-            th(scope='col') Breakfast
-            th(scope='col') Lunch
-            th(scope='col') Dinner
-            th(scope='col') Snack
-            th(scope='col') Beverage
-        tbody
-          each category in categoryTotal 
-            tr
-              th(scope='row')= categoryTotal[category]
-              td= category
-          //- tr
-          //-   th(scope='row') Nuts
-          //-   td #{Nuts}
-          //- tr
-          //-   th(scope='row') Spices
-          //-   td #{Spices}
-          //- tr
-          //-   th(scope='row') Cruciferous Vegetables
-          //-   td #{Cruciferous Vegetables}
-          //- tr
-          //-   th(scope='row') Leafy Greens
-          //-   td #{Leafy Greens}
-          //- tr
-          //-   th(scope='row') Other Vegetables
-          //-   td #{Other Vegetables}
-          //- tr
-          //-   th(scope='row') Whole Grains
-          //-   td #{Whole Grains}
-          //- tr
-          //-   th(scope='row') Beverages
-          //-   td #{Beverages}
-
-
-
-    
     footer.footer
       .container
         span.text-muted Copyright 2018 by Kira Hartlage
