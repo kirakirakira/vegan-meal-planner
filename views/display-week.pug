@@ -9,73 +9,24 @@ html(lang='en')
   body
     .container
       h1 Vegan Meal Planner
-      
-      each timeOfDay in ["Breakfast", "Lunch", "Dinner", "Snack", "Beverage"]
-        table.table
-          thead.thead-dark
-            tr
-              th(scope='col') Day of the Week
+      table.table
+        thead.thead-dark
+          tr
+            th(scope='col') Day of the Week
+            each timeOfDay in ["Breakfast", "Lunch", "Dinner", "Snack", "Beverage"]
               th(scope='col')= timeOfDay
-          tbody
-          each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
-            - if (val[timeOfDay] && val[timeOfDay].length > 0)
-              tr
-                th(scope='row')
-                  a(class='button', href="" + day)= day
-                  td
-                    ul
-                      - for (i = 0; i < val[timeOfDay].length; i++)
-                        li
-                          a(class='button', href="/meal/update/" + val[timeOfDay][i].id)=val[timeOfDay][i].mealName
-                          - console.log("id is ", val[timeOfDay][i].id);
-                          - console.log("mealName is ", val[timeOfDay][i].mealName);
-      
-      //- table.table
-      //-   thead.thead-dark
-      //-     tr
-      //-       th(scope='col') Day of the Week
-      //-       th(scope='col') Breakfast
-      //-   tbody
-      //-   each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
-      //-     - for (i = 0; i < val.Breakfast.length; i++)
-      //-       tr
-      //-         th(scope='row')
-      //-           a(class='button', href="" + day)= day
-      //-           td=val.Breakfast[i].mealName
-      //- 
-      //- table.table
-      //-   thead.thead-dark
-      //-     tr
-      //-       th(scope='col') Day of the Week
-      //-       th(scope='col') Lunch
-      //-   tbody
-      //-   each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
-      //-     - for (i = 0; i < val.Lunch.length; i++)
-      //-       tr
-      //-         th(scope='row')
-      //-           a(class='button', href="" + day)= day
-      //-           td=val.Lunch[i].mealName
-  
-      
-      
-      
-      //- table.table
-      //-   thead.thead-dark
-      //-     tr
-      //-       th(scope='col') Day of the Week
-      //-       th(scope='col') Breakfast
-      //-       th(scope='col') Lunch
-      //-       th(scope='col') Dinner
-      //-       th(scope='col') Snack
-      //-       th(scope='col') Beverage
-      //-   tbody
-      //-     each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
-      //-       tr
-      //-         th(scope='row')
-      //-           a(class='button', href="" + day)= day
-      //-           td #{val.Breakfast}
-
-              
+        tbody
+        each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
+          tr
+            th(scope='row')
+              a(class='button', href="" + day)= day
+            each timeOfDay in ["Breakfast", "Lunch", "Dinner", "Snack", "Beverage"]
+              - if (val[timeOfDay] && val[timeOfDay].length > 0)
+                td
+                  ul
+                    - for (i = 0; i < val[timeOfDay].length; i++)
+                      li
+                        a(class='button', href="/meal/update/" + val[timeOfDay][i].id)=val[timeOfDay][i].mealName
     footer.footer
       .container
         span.text-muted Copyright 2018 by Kira Hartlage
