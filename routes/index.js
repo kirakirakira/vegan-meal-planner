@@ -169,16 +169,11 @@ router.get('/:day', (req, res) => {
     if(err) return handleError(err);
 
     let dayPlan = {"Day": day, "Breakfast": [], "Lunch": [], "Dinner": [], "Snack": [], "Beverage": []};
-    let categoryTotal = {};
+    let categoryTotal = {"Beans":0, "Berries":0, "Other Fruits":0, "Flaxseeds":0, "Nuts":0, "Spices":0, "Cruciferous Vegetables":0, "Leafy Greens":0, "Other Vegetables":0, "Whole Grains":0, "Beverages":0};
 
     function updateCategoryCounts(mealCategoryData) {
       for (j = 0; j < mealCategoryData.length; j++) {
-        // console.log(mealCategoryData[j]);
-        if (mealCategoryData[j] in categoryTotal) {
           categoryTotal[mealCategoryData[j]] += 1;
-        } else {
-          categoryTotal[mealCategoryData[j]] = 1;
-        }
       }
     }
 
