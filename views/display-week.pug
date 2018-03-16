@@ -10,35 +10,50 @@ html(lang='en')
     .container
       h1 Vegan Meal Planner
       
-      table.table
-        thead.thead-dark
-          tr
-            th(scope='col') Day of the Week
-            th(scope='col') Breakfast
-        tbody
-        each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
-          - for (i = 0; i < val.Breakfast.length; i++)
+      each timeOfDay in ["Breakfast", "Lunch", "Dinner", "Snack", "Beverage"]
+        table.table
+          thead.thead-dark
             tr
-              th(scope='row')
-                a(class='button', href="" + day)= day
-                td=val.Breakfast[i].mealName
-                
-      table.table
-        thead.thead-dark
-          tr
-            th(scope='col') Day of the Week
-            th(scope='col') Lunch
-        tbody
-        each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
-          - for (i = 0; i < val.Lunch.length; i++)
-            tr
-              th(scope='row')
-                a(class='button', href="" + day)= day
-                td=val.Lunch[0]
+              th(scope='col') Day of the Week
+              th(scope='col')= timeOfDay
+          tbody
+          each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
+            - if (val[timeOfDay] && val[timeOfDay].length > 0)
+              - for (i = 0; i < val[timeOfDay].length; i++)
+                tr
+                  th(scope='row')
+                    a(class='button', href="" + day)= day
+                    td=val[timeOfDay][i].mealName
+      
+      //- table.table
+      //-   thead.thead-dark
+      //-     tr
+      //-       th(scope='col') Day of the Week
+      //-       th(scope='col') Breakfast
+      //-   tbody
+      //-   each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
+      //-     - for (i = 0; i < val.Breakfast.length; i++)
+      //-       tr
+      //-         th(scope='row')
+      //-           a(class='button', href="" + day)= day
+      //-           td=val.Breakfast[i].mealName
+      //- 
+      //- table.table
+      //-   thead.thead-dark
+      //-     tr
+      //-       th(scope='col') Day of the Week
+      //-       th(scope='col') Lunch
+      //-   tbody
+      //-   each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
+      //-     - for (i = 0; i < val.Lunch.length; i++)
+      //-       tr
+      //-         th(scope='row')
+      //-           a(class='button', href="" + day)= day
+      //-           td=val.Lunch[i].mealName
   
       
       
-      //- 
+      
       //- table.table
       //-   thead.thead-dark
       //-     tr
@@ -50,16 +65,10 @@ html(lang='en')
       //-       th(scope='col') Beverage
       //-   tbody
       //-     each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
-      //-       - for (i = 0; i < val.Breakfast.length; i++)
-      //-         tr
-      //-           th(scope='row')
-      //-             a(class='button', href="" + day)= day
-      //-             td=val.Breakfast[i].mealName
-      //-       - for (i = 0; i < val.Lunch.length; i++)
-      //-         tr
-      //-           th(scope='row')
-      //-             a(class='button', href="" + day)= day
-      //-             td=val.Lunch[i].mealName
+      //-       tr
+      //-         th(scope='row')
+      //-           a(class='button', href="" + day)= day
+      //-           td #{val.Breakfast}
 
               
     footer.footer

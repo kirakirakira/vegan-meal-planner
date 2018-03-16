@@ -25,9 +25,9 @@ router.get('/', (req, res) => {
               // dayPlan[day]["Breakfast"].push(meals[i].mealName);
               weekPlan[day]["Breakfast"].push({"mealName": meals[i]["mealName"]});
             } else if (meals[i].timeOfDay === "Lunch") {
-              weekPlan[day]["Lunch"].push(meals[i].mealName);
+              weekPlan[day]["Lunch"].push({"mealName": meals[i]["mealName"]});
             } else if (meals[i].timeOfDay === "Dinner") {
-              weekPlan[day]["Dinner"].push(meals[i].mealName);
+              weekPlan[day]["Dinner"].push({"mealName": meals[i]["mealName"]});
             }
           }
           console.log("what is weekPlan ", weekPlan);
