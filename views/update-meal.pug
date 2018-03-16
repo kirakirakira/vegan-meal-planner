@@ -30,11 +30,31 @@ html(lang='en')
         .form-group
           label(for='exampleFormControlSelect1') Choose Which Meal
           select#exampleFormControlSelect1.form-control(name='timeOfDay')
-            option Breakfast
-            option Lunch
-            option Dinner
-            option Snack
-            option Beverage
+            - if (timeOfDay == "Breakfast")
+              option(value="Breakfast" selected) Breakfast
+            - else
+              option(value="Breakfast") Breakfast
+              
+            - if (timeOfDay == "Lunch")
+              option(value="Lunch" selected) Lunch
+            - else
+              option(value="Lunch") Lunch
+              
+            - if (timeOfDay == "Dinner")
+              option(value="Dinner" selected) Dinner
+            - else
+              option(value="Dinner") Dinner
+              
+            - if (timeOfDay == "Snack")
+              option(value="Snack" selected) Snack
+            - else
+              option(value="Snack") Snack
+                  
+            - if (timeOfDay == "Beverage")
+              option(value="Beverage" selected) Beverage
+            - else
+              option(value="Beverage") Beverage
+
         .form-group
           label(for='exampleFormControlInput1') Name of Meal
           input#exampleFormControlInput1.form-control(type='text', placeholder='Very Delicious Food',  name='mealName' value= mealName)

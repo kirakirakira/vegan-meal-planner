@@ -209,6 +209,25 @@ router.get('/:day', (req, res) => {
           "categories": meals[i].categories
         });
         updateCategoryCounts(meals[i].categories);
+
+      } else if (meals[i].timeOfDay === "Snack") {
+        dayPlan["Snack"].push({
+          "id": meals[i]._id,
+          "mealName": meals[i].mealName,
+          "notes": meals[i].notes,
+          "categories": meals[i].categories
+        });
+        updateCategoryCounts(meals[i].categories);
+
+      } else if (meals[i].timeOfDay === "Beverage") {
+        dayPlan["Beverage"].push({
+          "id": meals[i]._id,
+          "mealName": meals[i].mealName,
+          "notes": meals[i].notes,
+          "categories": meals[i].categories
+        });
+        updateCategoryCounts(meals[i].categories);
+
       }
     }
     console.log("day plan from the day view ", dayPlan);
