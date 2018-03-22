@@ -22,6 +22,10 @@ const mealSchema = new mongoose.Schema({
   },
   days: {
     type: [{type: String}]
+  },
+  deleted: {
+    type: Boolean,
+    default: false
   }
 });
 

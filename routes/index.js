@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
   let promises = [];
   for (i = 0; i < daysOfWeek.length; i++) {
     let day = daysOfWeek[i];
-    let promise = Meal.find({days: {$in: [day]}}, function(err, meals) {
+    let promise = Meal.find({days: {$in: [day]}, deleted: {$ne: true}}, function(err, meals) {
           if(err) return handleError(err);
 
           weekPlan[day] = {"Breakfast": [], "Lunch": [], "Dinner": [], "Snack": [], "Beverage": []};
@@ -49,7 +49,6 @@ router.get('/', (req, res) => {
               });
             }
           }
-          console.log("what is weekPlan ", weekPlan);
         });
     promises.push(promise);
   }
@@ -161,11 +160,43 @@ router.post('/meal/update', function(req, res, next) {
   })
 });
 
+// DELETE a specific meal
+
+router.delete('/meal/delete/:mealId', function(req, res, next) {
+  console.log("connected to router delete method");
+  const Meal = mongoose.model('Meal');
+  const mealId = req.params.mealId;
+
+  Meal.findById(mealId, function(err, meal) {
+    console.log("meal? ?? ", meal);
+    if (err) {
+      const err = new Error('Server error');
+      err.status = 500;
+      return next(err);
+    }
+    if (!meal) {
+      const err = new Error('Meal not found');
+      err.status = 404;
+      return next(err);
+    }
+
+    meal.deleted = true;
+
+    meal.save(function(err, doomedMeal) {
+      res.json(doomedMeal);
+    })
+  })
+});
+
 // GET a specific day's meal plan
 router.get('/:day', (req, res) => {
   const { day } = req.params;
 
-  Meal.find({days: {$in: [day]}}, function(err, meals) {
+  Meal.find({days: {$in: [day]}, deleted: {$ne: true}}, function(err, meals) {
+    if(!meals) {
+      let dayPlan = {"Day": day};
+    }
+
     if(err) return handleError(err);
 
     let dayPlan = {"Day": day, "Breakfast": [], "Lunch": [], "Dinner": [], "Snack": [], "Beverage": []};
@@ -226,7 +257,7 @@ router.get('/:day', (req, res) => {
       }
     }
 
-    dayPlan = Object.assign({}, dayPlan, {'categoryTotal': categoryTotal});
+    dayPlan = Object.assign({}, dayPlan, {'categoryTotal': categoryTotal}, {'dayIs': day});
 
     res.render('display-day', dayPlan);
   })

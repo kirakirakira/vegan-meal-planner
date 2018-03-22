@@ -30,6 +30,7 @@ html(lang='en')
                     - for (i = 0; i < val[timeOfDay].length; i++)
                       li
                         a(class='button', href="/meal/update/" + val[timeOfDay][i].id)=val[timeOfDay][i].mealName
+                        a(class='button', href="/meal/delete/" + val[timeOfDay][i].id) Delete
     footer.footer
       .container
         span.text-muted Copyright 2018 by Kira Hartlage
