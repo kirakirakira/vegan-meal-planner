@@ -6,8 +6,10 @@ html(lang='en')
     title Vegan Meal Planner
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css', integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb', crossorigin='anonymous')
     link(rel='stylesheet', href='stylesheets/style.css')
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="/js/app.js" type="text/javascript")
   body
-    .container
+    #tableDataWeek.container
       h1 Vegan Meal Planner
       
       a.btn.btn-primary(href='/add', role='button') Add a meal
@@ -30,7 +32,7 @@ html(lang='en')
                     - for (i = 0; i < val[timeOfDay].length; i++)
                       li
                         a(class='button', href="/meal/update/" + val[timeOfDay][i].id)=val[timeOfDay][i].mealName
-                        a(class='button', href="/meal/delete/" + val[timeOfDay][i].id) Delete
+                        button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickWeek('" + val[timeOfDay][i].id + "')") Delete
     footer.footer
       .container
         span.text-muted Copyright 2018 by Kira Hartlage
