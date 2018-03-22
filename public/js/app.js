@@ -11,10 +11,6 @@ function handleDeleteMealClickWeek(id) {
   }
 }
 
-function getTheDay(day) {
-  console.log("I got the day ", day);
-}
-
 function deleteFile(id, day) {
   $.ajax({
     type: 'DELETE',
@@ -47,36 +43,3 @@ function deleteMealWeek(id) {
       console.log("Failed to delete", error);
     })
 }
-
-
-// how to refresh the data in the Pug template after deleting?
-
-// function getFiles(day) {
-//   return $.ajax('/' + day)
-//     .then(res => {
-//       console.log("Results from getFiles() for " + day, res);
-//       return res;
-//     })
-//     .fail(err => {
-//       console.error("Error in getFiles() for " + day, err);
-//       throw err;
-//     });
-// }
-//
-// function refreshFileList() {
-//   const template = $('#list-template').html();
-//   console.log(template);
-//   const compiledTemplate = pug.compileFile('display-day.pug');
-//
-//   getFiles()
-//     .then(files => {
-//
-//       window.fileList = files;
-//
-//       const data = {files: files};
-//       const html = compiledTemplate(data);
-//       $('#list-container').html(html);
-//     })
-// }
-//
-// refreshFileList();
