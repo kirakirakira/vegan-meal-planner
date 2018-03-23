@@ -9,11 +9,13 @@ html(lang='en')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="/js/app.js" type="text/javascript")
   body
-    #tableData.container.initial
+    #tableData.container
       h1 Daily Vegan Meal Plan for #{Day}
       
       a.btn.btn-primary(href='/add', role='button') Add a meal
-      table.table
+      a.btn.btn-secondary(href='/', role='button') View Week
+      
+      table.table.table-bordered
         thead.thead-dark
           tr
             th(scope='col') Time of Day
@@ -83,7 +85,7 @@ html(lang='en')
                   button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickDay('" + meal["id"] + "', '" + Day + "')") Delete
                   
 
-      table.table
+      table.table.table-bordered.table-sm
         thead.thead-dark
           tr
             th(scope='col') Daily Dozen
