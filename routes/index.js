@@ -5,8 +5,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Meal = require('../models/index');
 
-const { data } = require('../data/meal.json');
-
 // GET the entire week's meal plan
 router.get('/', (req, res) => {
 

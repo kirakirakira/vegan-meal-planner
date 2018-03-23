@@ -1,0 +1,79 @@
+[
+  {
+    "id": "a",
+    "timeOfDay": "Breakfast",
+    "mealName": "Tofu Scramble",
+    "notes": "Use extra-firm tofu",
+    "categories": [
+      "Beans",
+      "Spices",
+      "Other Vegetables"
+    ],
+    "days": [
+      "Saturday",
+      "Sunday"
+    ]
+  },
+  {
+    "id": "b",
+    "timeOfDay": "Lunch",
+    "mealName": "Quinoa and Black Bean Burger Wrap",
+    "notes": "Don't forget guacamole",
+    "categories": [
+      "Beans",
+      "Spices",
+      "Leafy Greens",
+      "Other Vegetables",
+      "Whole Grains"
+    ],
+    "days": [
+      "Monday",
+      "Tuesday"
+    ]
+  },
+  {
+    "id": "c",
+    "timeOfDay": "Dinner",
+    "mealName": "Taco Bell",
+    "notes": "",
+    "categories": [
+      "Beans",
+      "Spices",
+      "Other Vegetables"
+    ],
+    "days": [
+      "Thursday"
+    ]
+  },
+  {
+    "id": "d",
+    "timeOfDay": "Snack",
+    "mealName": "Soft Pretzels and Hummus",
+    "notes": "Get the frozen pretzels",
+    "categories": [
+      "Beans"
+    ],
+    "days": [
+      "Tuesday",
+      "Wednesday",
+      "Thursday"
+    ]
+  },
+  {
+    "id": "e",
+    "timeOfDay": "Beverage",
+    "mealName": "Smoothie",
+    "notes": "Peanut butter, oats, soy milk, spinach, berries",
+    "categories": [
+      "Beans",
+      "Berries",
+      "Nuts",
+      "Beverages"
+    ],
+    "days": [
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ]
+  }
+]

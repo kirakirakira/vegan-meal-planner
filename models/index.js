@@ -31,3 +31,20 @@ const mealSchema = new mongoose.Schema({
 
 var Meal = mongoose.model('Meal', mealSchema);
 module.exports = Meal;
+
+Meal.count({}, function(err, count) {
+
+  if (err) {
+    throw err;
+  }
+
+  if (count > 0) return ;
+
+  const mealSeed = require('./seed.json');
+  Meal.create(mealSeed, function(err, newMeals) {
+    if (err) {
+      throw err;
+    }
+    console.log("DB seeded");
+  });
+});
