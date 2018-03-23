@@ -15,4 +15,4 @@ I would like to make future changes regarding redirecting to the last page you w
 4. Run `npm install` to install dependencies.
 5. Run `mongod` in a separate terminal to start the Mongo database process.
 6. Back in the terminal where you ran `npm install`, now run `npm start` to start the application.
-7. Open browser and navigate to [localhost:3030](localhost:3030)
+7. Open browser and navigate to [localhost:3000](localhost:3000).
