@@ -1,5 +1,5 @@
 $('.carousel').carousel({
-  interval: 1000
+  interval: 1500
 })
 
 function handleDeleteMealClickDay(id, day) {
