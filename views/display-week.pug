@@ -6,12 +6,24 @@ html(lang='en')
     title Vegan Meal Planner
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css', integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb', crossorigin='anonymous')
     link(rel='stylesheet', href='stylesheets/style.css')
+    link(href='https://fonts.googleapis.com/css?family=Lato|Satisfy', rel='stylesheet')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js")
     script(src="/js/app.js" type="text/javascript")
   body
 
     #tableDataWeek.container
       h1 Weekly Vegan Meal Planner
+      
+      #carouselCPG.carousel.slide(data-ride='carousel')
+        .carousel-inner
+          .carousel-item.active
+            img.d-block.w-50(src='img/081_DDOC_May_We_Be_Guided_By_Our_Compassionate_Hearts.jpg', alt='First slide')
+          .carousel-item
+            img.d-block.w-50(src='img/Animalogy_share_kind.jpg', alt='Second slide')
+          .carousel-item
+            img.d-block.w-50(src='img/Quote_card_distaste_for_violence.jpg', alt='Third slide')
+      
       a.btn.btn-primary(href='/add', role='button') Add a meal
 
       table.table.table-sm.table-bordered.table-responsive-md
@@ -36,11 +48,7 @@ html(lang='en')
                         a(class='button deleteButton', onclick="handleDeleteMealClickWeek('" + val[timeOfDay][i].id + "')") (Delete)
               - else
                 td
-                  
-    .jumbotron
-      h1.display-4 Interested in learning more?
-      p
-        a.btn.btn-primary.btn-lg(href='https://www.nutritionfacts.org', role='button') Click Here
+
               
     footer.footer
       .container

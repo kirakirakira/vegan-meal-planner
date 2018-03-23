@@ -1,3 +1,7 @@
+$('.carousel').carousel({
+  interval: 1000
+})
+
 function handleDeleteMealClickDay(id, day) {
   if (confirm("Are you sure?")) {
     deleteMealDay(id, day);

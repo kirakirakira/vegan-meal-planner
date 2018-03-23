@@ -1,7 +1,10 @@
-
+body {
+  font-family: 'Lato', sans-serif;
+}
 
 h1 {
   color: green;
+  font-family: 'Satisfy', cursive;
 }
 
 ul {
@@ -30,10 +33,6 @@ li {
   float: left;
 }
 
-/*.btn {
-  margin-left: 20px;
-}*/
-
 a {
   cursor: pointer;
 }
@@ -42,12 +41,19 @@ a {
   margin-left: 20px;
 }
 
+.carousel-inner img {
+  margin: auto;
+}
+
 /* Override defaults in Bootstrap */
 a:not([href]):not([tabindex]) {
     color: red;
     text-decoration: underline;
 }
 
+#carouselCPG {
+  display: none;
+}
 
 /* Media Queries */
 /* Medium devices (tablets, 768px and up) */
@@ -66,5 +72,15 @@ a:not([href]):not([tabindex]) {
 
   .jumbotron h1 {
     color: white;
+  }
+
+  #carouselCPG {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  #carouselCPG img {
+    width: 25% !important;
   }
 }
