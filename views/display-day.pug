@@ -9,7 +9,7 @@ html(lang='en')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="/js/app.js" type="text/javascript")
   body
-    #tableData.container
+    #tableData.container.initial
       h1 Daily Vegan Meal Plan for #{Day}
       
       a.btn.btn-primary(href='/add', role='button') Add a meal
@@ -32,7 +32,7 @@ html(lang='en')
                   if meal["notes"]
                   p(class='dummy')=meal["notes"]
                 td
-                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteFileClick('" + meal["id"] + "', '" + Day + "')") Delete
+                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickDay('" + meal["id"] + "', '" + Day + "')") Delete
           if Lunch
             each meal in Lunch
               tr
@@ -44,7 +44,7 @@ html(lang='en')
                   if meal["notes"]
                   p(class='dummy')=meal["notes"]
                 td
-                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteFileClick('" + meal["id"] + "', '" + Day + "')") Delete
+                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickDay('" + meal["id"] + "', '" + Day + "')") Delete
           if Dinner
             each meal in Dinner
               tr
@@ -56,7 +56,7 @@ html(lang='en')
                   if meal["notes"]
                   p(class='dummy')=meal["notes"]
                 td
-                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteFileClick('" + meal["id"] + "', '" + Day + "')") Delete
+                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickDay('" + meal["id"] + "', '" + Day + "')") Delete
           if Snack
             each meal in Snack
               tr
@@ -68,7 +68,7 @@ html(lang='en')
                   if meal["notes"]
                   p(class='dummy')=meal["notes"]
                 td
-                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteFileClick('" + meal["id"] + "', '" + Day + "')") Delete
+                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickDay('" + meal["id"] + "', '" + Day + "')") Delete
           if Beverage
             each meal in Beverage
               tr
@@ -80,7 +80,7 @@ html(lang='en')
                   if meal["notes"]
                   p(class='dummy')=meal["notes"]
                 td
-                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteFileClick('" + meal["id"] + "', '" + Day + "')") Delete
+                  button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickDay('" + meal["id"] + "', '" + Day + "')") Delete
                   
 
       table.table
@@ -96,5 +96,5 @@ html(lang='en')
               th(scope='row')= category
               td= categoryTotal[category]
 
-    footer.footer
-      span.text-muted Copyright 2018 by Kira Hartlage
+      footer.footer
+        span.text-muted Copyright 2018 by Kira Hartlage

@@ -1,7 +1,6 @@
-
-function handleDeleteFileClick(id, day) {
+function handleDeleteMealClickDay(id, day) {
   if (confirm("Are you sure?")) {
-    deleteFile(id, day);
+    deleteMealDay(id, day);
   }
 }
 
@@ -11,7 +10,7 @@ function handleDeleteMealClickWeek(id) {
   }
 }
 
-function deleteFile(id, day) {
+function deleteMealDay(id, day) {
   $.ajax({
     type: 'DELETE',
     url: '/meal/delete/' + id,
@@ -21,7 +20,7 @@ function deleteFile(id, day) {
     .done(function(response) {
       console.log("Meal", id, "is deleted.");
       $("#dayOfWeek").text(day);
-      $("#tableData").load('/' + day);
+      location.reload(true);
     })
     .fail(function(error) {
       console.log("Failed to delete", error);
@@ -37,7 +36,7 @@ function deleteMealWeek(id) {
   })
     .done(function(response) {
       console.log("Meal", id, "is deleted.");
-      $("#tableDataWeek").load('/');
+      location.reload(true);
     })
     .fail(function(error) {
       console.log("Failed to delete", error);
