@@ -36,7 +36,7 @@ html(lang='en')
         each val, day in {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
           tr
             th(scope='row')
-              a(class='button', href="" + day)= day
+              a(class='button dayOfWeek', href="" + day)= day
             each timeOfDay in ["Breakfast", "Lunch", "Dinner", "Snack", "Beverage"]
               - console.log("val time of day is ", val[timeOfDay][0]);
               - if (val[timeOfDay] && val[timeOfDay].length > 0)
