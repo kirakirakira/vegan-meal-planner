@@ -9,9 +9,9 @@ html(lang='en')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="/js/app.js" type="text/javascript")
   body
+
     #tableDataWeek.container
       h1 Weekly Vegan Meal Planner
-      
       a.btn.btn-primary(href='/add', role='button') Add a meal
 
       table.table.table-sm.table-bordered.table-responsive-md
@@ -32,11 +32,15 @@ html(lang='en')
                     - for (i = 0; i < val[timeOfDay].length; i++)
                       li
                         a(class='button', href="/meal/update/" + val[timeOfDay][i].id)=val[timeOfDay][i].mealName
-                        button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickWeek('" + val[timeOfDay][i].id + "')") Delete
+                        //- button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickWeek('" + val[timeOfDay][i].id + "')") Delete
+                        a(class='button deleteButton', onclick="handleDeleteMealClickWeek('" + val[timeOfDay][i].id + "')") (Delete)
               - else
                 td
                   
-                
+    .jumbotron
+      h1.display-4 Interested in learning more?
+      p
+        a.btn.btn-primary.btn-lg(href='https://www.nutritionfacts.org', role='button') Click Here
               
     footer.footer
       .container

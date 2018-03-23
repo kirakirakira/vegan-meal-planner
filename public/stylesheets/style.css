@@ -1,3 +1,5 @@
+
+
 h1 {
   color: green;
 }
@@ -6,7 +8,45 @@ ul {
   list-style-type: none;
 }
 
+th {
+  text-align: left;
+}
 
+td {
+  max-width: 150px;
+  word-wrap: break-word;
+}
+
+.jumbotron {
+  display: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  float: left;
+}
+
+/*.btn {
+  margin-left: 20px;
+}*/
+
+a {
+  cursor: pointer;
+}
+
+.deleteButton {
+  margin-left: 20px;
+}
+
+/* Override defaults in Bootstrap */
+a:not([href]):not([tabindex]) {
+    color: red;
+    text-decoration: underline;
+}
 
 
 /* Media Queries */
@@ -14,4 +54,17 @@ ul {
 
 @media (min-width: 768px) {
 
+  td {
+    max-width: 250px;
+  }
+
+  .jumbotron {
+    display: block;
+    background-image: url('/img/cabbage.jpg');
+    background-size: 100%;
+  }
+
+  .jumbotron h1 {
+    color: white;
+  }
 }

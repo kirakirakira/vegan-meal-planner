@@ -83,8 +83,7 @@ html(lang='en')
                   p(class='dummy')=meal["notes"]
                 td
                   button(type="button" class='btn btn-xs btn-danger', onclick="handleDeleteMealClickDay('" + meal["id"] + "', '" + Day + "')") Delete
-                  
-
+      
       table.table.table-bordered.table-sm
         thead.thead-dark
           tr
@@ -97,6 +96,11 @@ html(lang='en')
             tr
               th(scope='row')= category
               td= categoryTotal[category]
+              
+      .jumbotron
+        h1.display-4 Interested in learning more?
+        p
+          a.btn.btn-primary.btn-lg(href='https://www.nutritionfacts.org', role='button') Click Here
 
       footer.footer
         span.text-muted Copyright 2018 by Kira Hartlage
