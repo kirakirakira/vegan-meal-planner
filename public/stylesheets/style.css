@@ -37,6 +37,10 @@ a {
   cursor: pointer;
 }
 
+.cancelButton {
+  margin-left: 10px;
+}
+
 .deleteButton {
   margin-left: 20px;
 }

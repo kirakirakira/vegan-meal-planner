@@ -6,6 +6,7 @@ html(lang='en')
     title Vegan Meal Planner
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css', integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb', crossorigin='anonymous')
     link(rel='stylesheet', href='../../stylesheets/style.css')
+    link(href='https://fonts.googleapis.com/css?family=Lato|Satisfy', rel='stylesheet')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
     script(src="/js/app.js" type="text/javascript")
 
@@ -76,7 +77,7 @@ html(lang='en')
             label(for='exampleFormControlTextarea1') Notes/Recipe
             textarea#exampleFormControlTextarea1.form-control(rows='3', name='notes')= notes
           input.btn.btn-primary(type='submit', value='Submit')
-          a(href="/")
+          a.cancelButton(href="/")
             input.btn.btn-light(type='button', value='Cancel')
     footer.footer
       .container
