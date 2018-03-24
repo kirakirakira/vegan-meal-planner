@@ -1,6 +1,4 @@
-
 // routes/index.js
-
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -21,7 +19,6 @@ router.get('/', (req, res) => {
           weekPlan[day] = {"Breakfast": [], "Lunch": [], "Dinner": [], "Snack": [], "Beverage": []};
           for (i = 0; i < meals.length; i++) {
             if (meals[i].timeOfDay === "Breakfast") {
-              // dayPlan[day]["Breakfast"].push(meals[i].mealName);
               weekPlan[day]["Breakfast"].push({
                 "mealName": meals[i]["mealName"],
                 "id": meals[i]["id"]
@@ -53,7 +50,6 @@ router.get('/', (req, res) => {
   }
   Promise.all(promises)
     .then(() => {
-      // console.log(dayPlan);
       res.render('display-week', weekPlan);
     })
     .catch((error) => {
@@ -156,7 +152,6 @@ router.post('/meal/update', function(req, res, next) {
 });
 
 // DELETE a specific meal
-
 router.delete('/meal/delete/:mealId', function(req, res, next) {
   const Meal = mongoose.model('Meal');
   const mealId = req.params.mealId;
@@ -251,7 +246,6 @@ router.get('/:day', (req, res) => {
     }
 
     dayPlan = Object.assign({}, dayPlan, {'categoryTotal': categoryTotal}, {'dayIs': day});
-
     res.render('display-day', dayPlan);
   })
 });
