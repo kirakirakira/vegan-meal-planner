@@ -1,3 +1,4 @@
+'use strict';
 // routes/index.js
 
 const express = require('express');
