@@ -1,4 +1,4 @@
-'use strict';
+
 // routes/index.js
 
 const express = require('express');
@@ -115,13 +115,10 @@ router.get('/meal/update/:mealId', function(req, res, next) {
 
 // Post "put" (update) an existing meal
 router.post('/meal/update', function(req, res, next) {
-  console.log("hit it");
   const Meal = mongoose.model('Meal');
-  console.log(req.body);
   const mealId = req.body.mealId;
 
   Meal.findById(mealId, function(err, meal) {
-    console.log("meal? ?? ", meal);
     if (err) {
       const err = new Error('Server error');
       err.status = 500;
@@ -155,19 +152,16 @@ router.post('/meal/update', function(req, res, next) {
       err.status = 400;
       return next(err);
     }
-    console.log(meal);
   })
 });
 
 // DELETE a specific meal
 
 router.delete('/meal/delete/:mealId', function(req, res, next) {
-  console.log("connected to router delete method");
   const Meal = mongoose.model('Meal');
   const mealId = req.params.mealId;
 
   Meal.findById(mealId, function(err, meal) {
-    console.log("meal? ?? ", meal);
     if (err) {
       const err = new Error('Server error');
       err.status = 500;

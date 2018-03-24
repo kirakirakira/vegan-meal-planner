@@ -38,7 +38,6 @@ html(lang='en')
             th(scope='row')
               a(class='button dayOfWeek', href="" + day)= day
             each timeOfDay in ["Breakfast", "Lunch", "Dinner", "Snack", "Beverage"]
-              - console.log("val time of day is ", val[timeOfDay][0]);
               - if (val[timeOfDay] && val[timeOfDay].length > 0)
                 td
                   ul
